@@ -4,12 +4,75 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://kit.fontawesome.com/d7e16e1f0b.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
-    <%= yield %>
+
+    <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand">
+        <a class="navbar-brand" href="/">
+          <span>Bookers</span></a>
+      </a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <li><%= link_to "Home", user_path(current_user.id), class: "fas fa-home" %></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "Users",users_path, class: "fas fa-users" %></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "Books",books_path,class: "fas fa-book-open" %></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "logout ", destroy_user_session_path,class: "fas fa-sign-out-alt", method: :delete %></li>
+        </li>
+
+        <% else %>
+        <li class="nav-item">
+          <li><%= link_to "Home", root_path, class: "fas fa-home" %></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "About",home_about_path, class: "fas fa-link" %></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "sign up", new_user_registration_path, class: "fas fa-user-plus" %></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "login", new_user_session_path, class: "fas fa-user-plus" %></li>
+        </li>
+      <% end %>
+      </ul>
+     </div>
+    </div>
+    </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <div class= "container mt-5">
+        <div class="row">
+          <div class= "mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
