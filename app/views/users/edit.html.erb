@@ -1,10 +1,28 @@
-<h2>User info</h2>
-<%= form_with model:@user, local:true do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName"%>
+<p id="notice"></p>
+<div class="container">
+  <div class"row">
+    <div class="col-sm-12 col-md-8 col lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+      <%= form_with model:@user, local:true do |f| %>
+      <form action="users"accpt-charset="UTF-8"method="post">
+        <div class="form-grop">
+          <label for="inputName">Name</label>
+          <p> <%= f.text_field :name, autofocus: true, id:"inputName"%></p>
+        </div>
+        <div class="form-grop">
+          <label for="user_image">Image</label>
+           <p><%= f.attachment_field :profile_image, placeholder: "profile_image" %></p>
+        </div>
+        <div class="form-grop">
+          <label for="inputIntroduction">Introduction</label>
+          <p><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction"%></p>
+        </div>
+        <div class="form-grop">
+          <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
+        </div>
+      </form>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-
-  <label for="inputIntroduction">Introduction</label>
-  <%= f.text_field :Introduction, autofocus: true, id:"inputIntroduction"%>
-  <%= f.submit "Update User" %>
-<% end %>

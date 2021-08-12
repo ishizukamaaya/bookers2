@@ -1,11 +1,18 @@
-<div class="col-md-8 offset-md-1">
-  <h2>Book detail</h2>
-  <table class="table">
-    <tbody>
-      <tr>
-        <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
-        <td><%= @book.title %></td>
-        <td><%= @book.body %></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-8 offset-md-1">
+    <h2>Book detail</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg",size:"40x40" %>
+          <p><%=link_to @user.name,users_path %></p>
+          </td>
+          <td><%=link_to @book.title,book_path %></td>
+          <td><%= @book.body %></td>
+          <td><a class="btn btn-sm btn-success"<%= link_to "Edit",edit_book_path %></a></td>
+          <td><a class="btn btn-sm btn-danger"<%= link_to "Destroy",book_path(@book.id),method: :delete %></a></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
