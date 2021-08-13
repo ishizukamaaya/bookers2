@@ -1,6 +1,16 @@
-<div class="col-md-8 offset-md-1">
-  <%= render 'books/list', user: @user,book:@book %>
-    <div class="row">
+<div class="container px-5 px-sm-0">
+ <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors
+    <% @book.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+ <% end %>
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'books/list', user: @user, book: @book %>
+  </div>
+  <div class="col-md-8 offset-md-1">
+      <p id="notice"></p>
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
         <thead>
@@ -28,5 +38,6 @@
         </tboby>
       </table>
     </div>
+</div>
 </div>
 

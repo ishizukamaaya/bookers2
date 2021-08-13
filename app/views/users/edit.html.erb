@@ -1,13 +1,19 @@
 <p id="notice"></p>
 <div class="container">
+  <% if @user.errors.any? %>
+    <%= @user.errors.count %>errors
+    <% @user.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
   <div class"row">
-    <div class="col-sm-12 col-md-8 col lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>User info</h2>
       <%= form_with model:@user, local:true do |f| %>
       <form action="users"accpt-charset="UTF-8"method="post">
         <div class="form-grop">
           <label for="inputName">Name</label>
-          <p> <%= f.text_field :name, autofocus: true, id:"inputName"%></p>
+          <p> <%= f.text_field :name, autofocus: true, id:"inputName", class:"form-control"%></p>
         </div>
         <div class="form-grop">
           <label for="user_image">Image</label>
@@ -15,11 +21,12 @@
         </div>
         <div class="form-grop">
           <label for="inputIntroduction">Introduction</label>
-          <p><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction"%></p>
+          <p><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control"%></p>
         </div>
         <div class="form-grop">
-          <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
+          <%= link_to 'Update User',user_path, class:"btn btn-secondary" %>
         </div>
+
       </form>
       <% end %>
     </div>
