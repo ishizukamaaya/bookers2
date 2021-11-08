@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   #フォローしているか確認
   def following?(user)
-    following_user.incloude?(user)
+    following_user.include?(user)
   end
 
 end
