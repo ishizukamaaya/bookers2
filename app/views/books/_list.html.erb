@@ -15,6 +15,15 @@
           <th class="profile-inputIntroduction"><%= user.introduction %></th>
         </tr>
 
+        <tr>
+          <th>following</th>
+          <td><%= user.follower.count %></td>
+        </tr>
+        <tr>
+          <th>followers</th>
+          <td><%= user.followed.count %></td>
+        </tr>
+
        </tbody>
       </table>
 
