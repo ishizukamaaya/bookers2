@@ -1,0 +1,20 @@
+<table class='table table-hover table-inverse'>
+
+    <thead>
+        <tr>
+            <th></th>
+            <th>Title</th>
+            <th>opininon</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="book">
+    <% books.each do |book| %>
+      <tr>
+        <td><%= attachment_image_tag(book.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>

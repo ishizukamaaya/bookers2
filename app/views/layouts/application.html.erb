@@ -40,7 +40,6 @@
         <li class="nav-item">
           <%= link_to "logout", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light" %>
         </li>
-
         <% else %>
           <li class="nav-item">
             <%= link_to "Home", root_path, class:"fas fa-home nav-link text-light" %>
@@ -63,6 +62,7 @@
 
     <main>
       <div class= "text-success"><%= flash[:notice] %></div>
+      <%= render 'searchs/form' %>
       <%= yield %>
     </main>
 
