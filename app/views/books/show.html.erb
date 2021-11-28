@@ -8,7 +8,7 @@
     <h2>Book detail</h2>
     <table class="table">
       <tbody>
-        <tr>
+        <tr id="book_<%= @book.id %>">
           <td><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg",size:"40x40" %>
           <p><%=link_to @user.name,user_path(@user.id) %></p>
           </td>
@@ -19,21 +19,7 @@
             <td><%= link_to "Destroy",book_path(@book.id), method: :delete, class:"btn btn-sm btn-danger", data: { confirm: '本当に消しますか？' }  %></td>
           <% end %>
           <td>コメント件数:<%=@book.book_comments.count %></td>
-          <td>
-            <% if @book.favorited_by?(current_user) %>
-            <p>
-              <%= link_to book_favorites_path(@book), method: :delete do %>
-                ♥<%= @book.favorites.count %> いいね
-              <% end %>
-            </p>
-            <% else %>
-            <p>
-              <%= link_to book_favorites_path(@book), method: :post do %>
-                ♡<%= @book.favorites.count %> いいね
-              <% end %>
-            </p>
-            <% end %>
-          </td>
+          <td class = "favorite-btn"><%= render "favorites/favorite-btn", book: @book %></td>
         </tr>
       </tbody>
     </table>
