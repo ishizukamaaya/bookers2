@@ -62,7 +62,10 @@
 
     <main>
       <div class= "text-success"><%= flash[:notice] %></div>
-      <%= render 'searchs/form' %>
+      <div class = "text-right mt-3 mr-5">
+        <%= render 'searchs/form' %>
+      </div>
+
       <%= yield %>
     </main>
 
